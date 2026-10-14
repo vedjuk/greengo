@@ -1,12 +1,10 @@
 <div align="center">
 
 <div align="left">
-
-```
- ┌───┐
+<pre>
+<ins> ┌───┐ </ins>
 ┌[≖_≖]┘~◯ Greengo rustlin' up app.ts 🔨
-```
-
+</pre>
 </div>
 
 # 🤠 Greengo
@@ -31,8 +29,8 @@ tips his boater when the job's done, and naps when things go quiet.
 
 Greengo lives in Claude Code's status line (and in VS Code, if you use the chat panel). He watches what Claude is doing and reacts:
 
-```
- ┌───┐
+<pre>
+<ins> ┌───┐ </ins>
  [¬‿¬]/ Greengo badges? we don't need no stinkin' badges ⭐         ← session starts
 ┌[≖_≖]┘~◯ Greengo readin' auth.ts 📜                                ← Claude reads a file
 └[ò_ó]┐~○ Greengo high noon for the tests 🕛 ♞  ♞                   ← tests, with 2 subagents out ridin'
@@ -40,7 +38,7 @@ Greengo lives in Claude Code's status line (and in VS Code, if you use the chat 
  [×_×] Greengo deserve's got nothin' to do with it ⚠️               ← a tool failed (in red)
  [-‿-]/ Greengo ridin' off into the sunset 🌅                       ← done, and he tips his hat
  [-_-] Greengo Shane… come back… 💤                                 ← napping after 90 quiet seconds
-```
+</pre>
 
 - **Narrates Claude's work** with 140+ lines: nods to Tombstone, The Good, the Bad and the Ugly, Butch Cassidy, High Noon, No Country for Old Men and more, plus plenty of cowpoke coding talk ("testin' the herd 🧪", "signin' the ledger ✍️", "catchin' the 3:10 to origin 🚂").
 - **Has range.** Stone cold `[¬_¬]╾~` with a cigarillo, gunslinger squint `[≖_≖]`, rough `[ò_ó]`, smug `[¬‿¬]`, and only now and then a cute grin `[^ᴗ^]`. After 11pm he gets weary: `[=_=]`.
