@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Troubleshooting guide
+    url: https://github.com/vedjuk/greengo/blob/main/docs/troubleshooting.md
+    about: Most "Greengo doesn't show up" problems are solved here.

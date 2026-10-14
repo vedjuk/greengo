@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Node / extension build leftovers
+node_modules/
+vscode/*.vsix
+*.log
+
+# Editors
+.vscode/
+.idea/

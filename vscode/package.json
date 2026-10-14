@@ -1,0 +1,89 @@
+{
+  "name": "greengo",
+  "displayName": "Greengo",
+  "description": "Greengo, the little green cowboy robot, keeps you company while Claude Code works — in the status bar and in his own panel.",
+  "version": "1.0.0",
+  "publisher": "greengo-local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedjuk/greengo"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "greengo",
+          "title": "Greengo",
+          "icon": "media/hat.svg"
+        }
+      ]
+    },
+    "views": {
+      "greengo": [
+        {
+          "type": "webview",
+          "id": "greengo.view",
+          "name": "Greengo",
+          "icon": "media/hat.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "greengo.showPanel",
+        "title": "Greengo: Show panel"
+      },
+      {
+        "command": "greengo.toggleStatusBar",
+        "title": "Greengo: Toggle status bar"
+      }
+    ],
+    "configuration": {
+      "title": "Greengo",
+      "properties": {
+        "greengo.statusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the compact Greengo in the status bar."
+        },
+        "greengo.statusBarMaxLength": {
+          "type": "number",
+          "default": 60,
+          "description": "Longest status bar text before it gets trimmed with …"
+        },
+        "greengo.panelFontSize": {
+          "type": "number",
+          "default": 18,
+          "description": "Font size of Greengo in his panel, in pixels."
+        }
+      }
+    }
+  },
+  "homepage": "https://github.com/vedjuk/greengo#readme",
+  "bugs": {
+    "url": "https://github.com/vedjuk/greengo/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "status bar",
+    "companion",
+    "cowboy",
+    "fun"
+  ],
+  "scripts": {
+    "package": "npx --yes @vscode/vsce package --no-dependencies --skip-license --out ../greengo.vsix",
+    "test": "node ../tests/extension.test.js"
+  }
+}

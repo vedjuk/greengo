@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Shell syntax
+        run: bash -n greengo.sh install.sh uninstall.sh tests/smoke.sh
+
+      - name: Smoke test (install, play a session, uninstall)
+        run: bash tests/smoke.sh
+
+      - name: VS Code extension test
+        run: node tests/extension.test.js
