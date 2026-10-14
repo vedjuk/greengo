@@ -1,9 +1,13 @@
 <div align="center">
 
+<div align="left">
+
 ```
  ┌───┐
 ┌[≖_≖]┘~◯ Greengo rustlin' up app.ts 🔨
 ```
+
+</div>
 
 # 🤠 Greengo
 
