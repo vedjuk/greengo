@@ -25,7 +25,7 @@ tips his boater when the job's done, and naps when things go quiet.
 
 ## What he does
 
-Greengo lives in Claude Code's status line (and in VS Code, if you use the chat panel). He watches what Claude is doing and reacts:
+Greengo lives in Claude Code's status line (and in VS Code and the Claude desktop app, which don't show status lines). He watches what Claude is doing and reacts:
 
 <pre><ins> ┌───┐ </ins>
  [¬‿¬]/ Greengo badges? we don't need no stinkin' badges ⭐         ← session starts
@@ -50,6 +50,7 @@ Greengo lives in Claude Code's status line (and in VS Code, if you use the chat 
 - **[Claude Code](https://code.claude.com/docs/en/setup)**, a recent version (`claude update`)
 - **python3**, only for the installer (macOS offers to install it with the developer tools)
 - **VS Code** (optional), for the status bar and panel version
+- **Claude desktop app** (optional), for Greengo above the prompt in the Code tab
 
 ## Install
 
@@ -65,8 +66,9 @@ The installer:
 2. adds his hooks and status line to `~/.claude/settings.json`, keeping everything else and saving a backup first
 3. adds a `/greengo` command to Claude Code
 4. installs the VS Code extension, if it finds VS Code
+5. sets up the Claude desktop app mod, which puts Greengo above the prompt in the Code tab
 
-Then start a new session with `claude` in a terminal, and Greengo rides in. If you use VS Code, reload it once (`Cmd+Shift+P` → **Developer: Reload Window**).
+Then start a new session with `claude` in a terminal, or in the desktop app's Code tab, and Greengo rides in. If you use VS Code, reload it once (`Cmd+Shift+P` → **Developer: Reload Window**).
 
 ## In VS Code
 
@@ -77,6 +79,10 @@ VS Code's Claude Code chat panel doesn't show terminal status lines, so Greengo 
 | <img src="docs/images/vscode-status-bar.png" alt="Greengo in the VS Code status bar" width="320"> | Boater, colors and animation, in a tab next to the Terminal. Move it anywhere: right-click the **Greengo** tab → **Move To**. |
 
 More in [docs/vscode-extension.md](docs/vscode-extension.md).
+
+## In the Claude desktop app
+
+The desktop app's Code tab doesn't show terminal status lines either, so Greengo comes with a small Claude Code mod that draws him, boater and all, in a band right above the prompt. The installer sets it up; start a new Code session to see him. More in [docs/desktop-app.md](docs/desktop-app.md).
 
 ## Usage
 
@@ -92,7 +98,7 @@ Type these in Claude Code:
 
 ## Make him your own
 
-All of Greengo's personality lives in one readable bash script, `~/.claude/greengo/greengo.sh`. Add a line to any state, invent new faces, change when he naps. Your changes show up within a second, in the terminal and in VS Code alike. See [docs/customizing.md](docs/customizing.md).
+All of Greengo's personality lives in one readable bash script, `~/.claude/greengo/greengo.sh`. Add a line to any state, invent new faces, change when he naps. Your changes show up within a second, in the terminal, VS Code and the desktop app alike. See [docs/customizing.md](docs/customizing.md).
 
 ## Uninstall
 
@@ -100,7 +106,7 @@ All of Greengo's personality lives in one readable bash script, `~/.claude/green
 ~/.claude/greengo/uninstall.sh
 ```
 
-This removes his hooks, status line, `/greengo` command, VS Code extension and files, and puts back any status line you had before.
+This removes his hooks, status line, `/greengo` command, VS Code extension, desktop mod and files, and puts back any status line you had before.
 
 ## Documentation
 
@@ -110,6 +116,7 @@ This removes his hooks, status line, `/greengo` command, VS Code extension and f
 | [Moods and faces](docs/moods-and-faces.md) | Every mood, what triggers it, and the faces he pulls |
 | [Customizing](docs/customizing.md) | New lines, new faces, colors, timings |
 | [VS Code extension](docs/vscode-extension.md) | Status bar, panel, settings, building the `.vsix` |
+| [Claude desktop app](docs/desktop-app.md) | The band above the prompt, and developing the mod |
 | [Troubleshooting](docs/troubleshooting.md) | When Greengo doesn't show up |
 
 ## Contributing

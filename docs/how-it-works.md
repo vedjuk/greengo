@@ -1,6 +1,6 @@
 # How Greengo works
 
-Greengo is built entirely on two standard Claude Code features, [hooks](https://code.claude.com/docs/en/hooks) and the [custom status line](https://code.claude.com/docs/en/statusline), plus a small VS Code extension. There's no daemon and no network access, just one bash script and a few tiny files.
+Greengo is built entirely on two standard Claude Code features, [hooks](https://code.claude.com/docs/en/hooks) and the [custom status line](https://code.claude.com/docs/en/statusline), plus a small VS Code extension and a Claude desktop app mod. There's no daemon and no network access, just one bash script and a few tiny files.
 
 ```mermaid
 flowchart LR
@@ -69,6 +69,10 @@ VS Code's chat panel doesn't show terminal status lines. The extension fills tha
 
 So any line or face you add to `greengo.sh` shows up in the terminal and in VS Code at the same time.
 
+## 4. The desktop app mod does the same
+
+The Claude desktop app's Code tab doesn't show terminal status lines either. A Claude Code mod in `~/.claude/greengo/desktop/`, which sessions load through `CLAUDE_CODE_PLUGIN_DIRS` in `~/.claude/settings.json`, runs `greengo.sh status` for its own session once a second and draws the colored output in the band above the prompt. It draws only on the desktop surface, so terminal sessions keep just their status line. More in [Claude desktop app](desktop-app.md).
+
 ## Files
 
 | Path | What it is |
@@ -78,8 +82,9 @@ So any line or face you add to `greengo.sh` shows up in the terminal and in VS C
 | `~/.claude/greengo/state/<session>` | Current mood for each session |
 | `~/.claude/greengo/state/<session>.horses` | How many subagents are out |
 | `~/.claude/greengo/sessions`, `chores` | Lifetime counters for `/greengo stats` |
+| `~/.claude/greengo/desktop/` | The Claude desktop app mod |
 | `~/.claude/skills/greengo/SKILL.md` | The `/greengo` command |
-| `~/.claude/settings.json` | Gets Greengo's `hooks` and `statusLine` entries |
+| `~/.claude/settings.json` | Gets Greengo's `hooks` and `statusLine` entries, and his mod folder in `env.CLAUDE_CODE_PLUGIN_DIRS` |
 | `~/.claude/settings.json.greengo-backup-*` | Backups made by the installer and uninstaller |
 
 State files older than a day are tidied up automatically.

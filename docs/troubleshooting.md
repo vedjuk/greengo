@@ -35,6 +35,13 @@ His hooks aren't running. In Claude Code, run `/hooks`: you should see Greengo's
 
 The extension follows the session that changed most recently. If two sessions are busy at the same time, he switches to whichever one acted last.
 
+## Claude desktop app: no Greengo above the prompt
+
+1. **Start a new Code session.** The mod loads when a session starts, so sessions already open don't have it.
+2. **Check the settings.** `~/.claude/settings.json` should have `"CLAUDE_CODE_PLUGIN_DIRS"` under `env`, listing `~/.claude/greengo/desktop`. Running `./install.sh` again fixes it.
+3. **Check that he can draw:** run the `greengo.sh status` command from the top of this page. If it prints nothing, run `/greengo show`.
+4. **Check the mod:** `claude plugin validate ~/.claude/greengo/desktop` should pass. It needs Claude Code 2.1.304 or newer; run `claude update` if your `claude` is older.
+
 ## The installer asks for python3
 
 The installer uses python3 to edit your settings safely. On macOS, run `xcode-select --install`, then run `./install.sh` again. Greengo himself only needs bash.

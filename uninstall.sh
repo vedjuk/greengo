@@ -1,5 +1,5 @@
 #!/bin/bash
-# Removes Greengo's hooks, status line, /greengo command, VS Code extension, and files.
+# Removes Greengo's hooks, status line, desktop mod, /greengo command, VS Code extension, and files.
 set -e
 DEST="$HOME/.claude/greengo"
 python3 "$DEST/merge_settings.py" uninstall "$HOME/.claude/settings.json" "$DEST"

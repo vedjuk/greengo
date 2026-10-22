@@ -24,6 +24,7 @@ uninstall.sh          Removes everything and restores your old status line
 merge_settings.py     Adds or removes Greengo's entries in ~/.claude/settings.json
 skill/SKILL.md        The /greengo command
 vscode/               The VS Code extension (plain JS, no dependencies)
+desktop/              The Claude desktop app mod (a Claude Code hooks module)
 greengo.vsix          The built extension that install.sh installs
 tests/                Smoke test and extension test
 docs/                 Documentation
@@ -38,9 +39,10 @@ Before opening a pull request:
 ```bash
 bash tests/smoke.sh            # installs into a throwaway home, plays a session, uninstalls
 node tests/extension.test.js   # renders Greengo through the extension with a fake VS Code
+claude plugin test desktop     # draws Greengo through the desktop mod (if you changed it)
 ```
 
-Both also run in CI on macOS and Ubuntu.
+The first two also run in CI on macOS and Ubuntu. See [Claude desktop app](docs/desktop-app.md#developing-the-mod) for the mod.
 
 A few rules keep Greengo running everywhere:
 

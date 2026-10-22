@@ -4,6 +4,10 @@ All notable changes to Greengo are listed here. The format follows [Keep a Chang
 
 ## [Unreleased]
 
+### Added
+
+- Greengo in the Claude desktop app: a Claude Code mod draws him above the prompt in the Code tab, which shows no terminal status lines. The installer sets it up and the uninstaller removes it.
+
 ## [1.0.0] - 2026-10-13
 
 The first ride.

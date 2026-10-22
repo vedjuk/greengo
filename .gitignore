@@ -9,3 +9,7 @@ vscode/*.vsix
 # Editors
 .vscode/
 .idea/
+
+# Written by Claude Code when it loads the desktop mod from a folder
+desktop/.claude-plugin/types/
+desktop/tsconfig.json

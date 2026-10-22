@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add or remove Greengo's hooks and status line in ~/.claude/settings.json.
+"""Add or remove Greengo's hooks, status line and desktop mod in ~/.claude/settings.json.
 
 usage: merge_settings.py install|uninstall <settings.json> <gg_dir>
 Keeps every other setting and hook untouched and writes a backup first.
@@ -10,6 +10,9 @@ MARK = "/.claude/greengo/greengo.sh"
 EVENTS = ["SessionStart", "UserPromptSubmit", "PreToolUse", "PostToolUseFailure",
           "Notification", "SubagentStart", "SubagentStop", "Stop", "StopFailure",
           "PreCompact", "SessionEnd"]
+# The desktop app's sessions load mods from the folders this variable lists.
+PLUGIN_DIRS = "CLAUDE_CODE_PLUGIN_DIRS"
+DESKTOP_MOD = "~/.claude/greengo/desktop"
 
 
 def is_greengo(handler):
@@ -31,6 +34,15 @@ def strip_greengo(settings):
             del hooks[event]
     if "hooks" in settings and not settings["hooks"]:
         del settings["hooks"]
+
+    env = settings.get("env", {})
+    dirs = [d for d in str(env.get(PLUGIN_DIRS, "")).split(os.pathsep) if d and "/.claude/greengo/" not in d]
+    if dirs:
+        env[PLUGIN_DIRS] = os.pathsep.join(dirs)
+    else:
+        env.pop(PLUGIN_DIRS, None)
+    if "env" in settings and not settings["env"]:
+        del settings["env"]
 
 
 def main():
@@ -60,6 +72,8 @@ def main():
         hooks = settings.setdefault("hooks", {})
         for event in EVENTS:
             hooks.setdefault(event, []).append({"hooks": [dict(handler)]})
+        env = settings.setdefault("env", {})
+        env[PLUGIN_DIRS] = os.pathsep.join(filter(None, [env.get(PLUGIN_DIRS), DESKTOP_MOD]))
     else:
         if current and MARK in str(current.get("command", "")):
             del settings["statusLine"]

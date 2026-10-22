@@ -14,7 +14,8 @@ check(){ if eval "$2"; then ok "$1"; else bad "$1"; fi; }
 
 # A pre-existing setting and status line that Greengo must leave alone / restore.
 cat > "$HOME/.claude/settings.json" <<'EOF'
-{ "model": "opus", "statusLine": { "type": "command", "command": "~/my-old-statusline.sh" } }
+{ "model": "opus", "statusLine": { "type": "command", "command": "~/my-old-statusline.sh" },
+  "env": { "CLAUDE_CODE_PLUGIN_DIRS": "~/my-mods" } }
 EOF
 
 echo "Install"
@@ -26,6 +27,10 @@ check "/greengo command installed"  "[ -f '$HOME/.claude/skills/greengo/SKILL.md
 check "status line points at Greengo" "grep -q 'greengo.sh\\\\\" status' '$S'"
 check "hooks registered"            "[ \$(grep -c 'greengo.sh\\\\\" hook' '$S') -ge 10 ]"
 check "other settings kept"         "grep -q '\"model\": \"opus\"' '$S'"
+check "desktop mod installed"       "[ -f '$HOME/.claude/greengo/desktop/hooks/register.tsx' ] && [ -f '$HOME/.claude/greengo/desktop/.claude-plugin/plugin.json' ]"
+check "desktop mod registered"      "grep -q '\"CLAUDE_CODE_PLUGIN_DIRS\": \"~/my-mods:~/.claude/greengo/desktop\"' '$S'"
+bash "$ROOT/install.sh" >/dev/null 2>&1
+check "reinstall registers it once" "[ \$(grep -o 'greengo/desktop' '$S' | wc -l) -eq 1 ]"
 
 hook()   { echo "{\"session_id\":\"t1\",$1}" | "$G" hook; }
 status() { echo '{"session_id":"t1","context_window":{"used_percentage":42}}' | "$G" status | sed 's/\x1b\[[0-9;]*m//g'; }
@@ -69,6 +74,7 @@ bash "$HOME/.claude/greengo/uninstall.sh" >/dev/null 2>&1
 check "files removed"               "[ ! -e '$HOME/.claude/greengo' ]"
 check "hooks removed"               "! grep -q greengo '$S'"
 check "old status line restored"    "grep -q 'my-old-statusline.sh' '$S'"
+check "other mod folders kept"      "grep -q '\"CLAUDE_CODE_PLUGIN_DIRS\": \"~/my-mods\"' '$S'"
 
 echo
 echo "$PASS passed, $FAIL failed"

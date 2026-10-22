@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installs Greengo into ~/.claude (and his VS Code extension). Safe to run again to update.
+# Installs Greengo into ~/.claude (with his desktop mod and VS Code extension). Safe to run again to update.
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"
 DEST="$HOME/.claude/greengo"
@@ -18,10 +18,16 @@ cp "$HERE/greengo.sh" "$DEST/greengo.sh"
 cp "$HERE/merge_settings.py" "$DEST/merge_settings.py"
 cp "$HERE/uninstall.sh" "$DEST/uninstall.sh"
 cp "$HERE/skill/SKILL.md" "$HOME/.claude/skills/greengo/SKILL.md"
+# The Claude desktop app mod: Greengo above the prompt in the Code tab.
+rm -rf "$DEST/desktop"
+mkdir -p "$DEST/desktop/.claude-plugin" "$DEST/desktop/hooks" "$DEST/desktop/types"
+cp "$HERE/desktop/.claude-plugin/plugin.json" "$DEST/desktop/.claude-plugin/"
+cp "$HERE/desktop/hooks/hooks.json" "$HERE/desktop/hooks/register.tsx" "$DEST/desktop/hooks/"
+cp "$HERE/desktop/types/index.d.ts" "$DEST/desktop/types/"
 chmod +x "$DEST/greengo.sh" "$DEST/uninstall.sh"
 
 python3 "$DEST/merge_settings.py" install "$SETTINGS" "$DEST"
-echo "  ✓ hooks and terminal status line"
+echo "  ✓ hooks, terminal status line and Claude desktop app mod"
 
 # The VS Code extension: Greengo in the status bar and in his own panel.
 find_code() {
@@ -45,5 +51,6 @@ fi
 echo "✅ Done! Yeehaw."
 echo "   VS Code: Greengo rides in the status bar; click him (or Cmd+Shift+P → 'Greengo: Show panel') for the full look."
 echo "   Terminal: run 'claude' to see him in the status line."
+echo "   Claude desktop app: start a new Code session and he rides above the prompt."
 echo "   Try:  /greengo name Tex   ·   /greengo color cyan   ·   /greengo stats"
 echo "   Uninstall any time:  ~/.claude/greengo/uninstall.sh"
