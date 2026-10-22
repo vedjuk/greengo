@@ -4,6 +4,8 @@ All notable changes to Greengo are listed here. The format follows [Keep a Chang
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-10-22
+
 ### Changed
 
 - Desktop app: Greengo's boater is now a saddle brown that reads on light themes too, instead of a pale straw that faded into them.
@@ -33,6 +35,7 @@ The first ride.
 - Installer and uninstaller that keep your other settings, back them up, and restore your previous status line.
 - Smoke test, extension test and CI on macOS and Ubuntu.
 
-[Unreleased]: https://github.com/vedjuk/greengo/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/vedjuk/greengo/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/vedjuk/greengo/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/vedjuk/greengo/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/vedjuk/greengo/releases/tag/v1.0.0

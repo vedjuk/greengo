@@ -1,6 +1,6 @@
 {
   "name": "greengo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Greengo the cowboy robot, live above the prompt in the Claude desktop app",
   "author": { "name": "vedjuk" },
   "homepage": "https://github.com/vedjuk/greengo",
