@@ -41,6 +41,8 @@ test('draws what greengo.sh status prints, on desktop only', async ($, on) => {
 
   const ui = await $.ui.mount({ ...BAND, surface: 'desktop' })
   expect((await ui.find({ type: 'Text', text: /┌───┐/ }))?.text).toContain('┌───┐')
+  // The pale terminal straw becomes a brown that reads on light and dark themes.
+  expect(JSON.stringify(await ui.drawn())).toContain('"color":"#a8743c"')
   expect((await ui.find({ type: 'Text', text: /readin' app\.ts/ }))?.text).toContain('Greengo')
   await ui.unmount()
 

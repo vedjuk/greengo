@@ -25,7 +25,7 @@ The mod needs a recent Claude Code (2.1.304 or newer). The desktop app keeps its
 The mod is one hooks module, [`desktop/hooks/register.tsx`](../desktop/hooks/register.tsx):
 
 - When the session starts, it sets a once-a-second timer. Each tick runs `greengo.sh status` for the session with `GG_NO_BATTERY=1`, as the VS Code extension does.
-- It splits the output's terminal colors into colored runs and draws them in the band above the prompt, in a monospaced font so the boater sits on his head.
+- It splits the output's terminal colors into colored runs and draws them in the band above the prompt, in a monospaced font so the boater sits on his head. The boater's pale terminal straw becomes a saddle brown (`#a8743c`), because the band can't tell a light theme from a dark one and that shade reads on both.
 - It redraws only when the output changes, and draws nothing while a survey holds the band.
 - It draws only on the `desktop` surface. In a terminal his status line already shows him, and in VS Code the extension does.
 

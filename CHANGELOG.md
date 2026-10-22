@@ -4,6 +4,10 @@ All notable changes to Greengo are listed here. The format follows [Keep a Chang
 
 ## [Unreleased]
 
+### Changed
+
+- Desktop app: Greengo's boater is now a saddle brown that reads on light themes too, instead of a pale straw that faded into them.
+
 ## [1.1.0] - 2026-10-22
 
 Greengo rides into the desktop app.

@@ -16,8 +16,13 @@ const ANSI: Record<number, string> = {
   35: '#b083f0', 36: '#39c5cf', 90: '#8b949e', 97: '#f0f0f0',
 }
 
-// xterm 256-color index to hex (the boater's straw is 223).
+// The terminal's pale straw (223) fades on a light theme, and the band can't tell
+// which theme is on, so the boater gets a saddle brown that reads on both.
+const STRAW = '#a8743c'
+
+// xterm 256-color index to hex.
 function xterm(n: number): string | undefined {
+  if (n === 223) return STRAW
   if (n < 16) return ANSI[n + 30] ?? ANSI[n - 8 + 90]
   const hex = (v: number) => v.toString(16).padStart(2, '0')
   if (n >= 232) { const g = 8 + (n - 232) * 10; return `#${hex(g)}${hex(g)}${hex(g)}` }
